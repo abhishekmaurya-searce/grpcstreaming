@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package gRPCGreet;
+
+option go_package = "streaming/proto";
+
+service StreamingService {
+  rpc UnaryExample(RequestMessage) returns (ResponseMessage);
+  rpc ServerStreamingExample(RequestMessage) returns (stream ResponseMessage);
+  rpc ClientStreamingExample(stream RequestMessage) returns (ResponseMessage);
+  rpc BidirectionalStreamingExample(stream RequestMessage) returns (stream ResponseMessage);
+}
+
+message RequestMessage {
+  string message = 1;
+}
+
+message ResponseMessage {
+  string message = 1;
+}
